@@ -64,16 +64,15 @@ const LanguageSkills = () => {
   ];
 
   return (
-    <>
-      <section className="py-16 bg-base-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">
-              Programming Skills
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-accent to-secondary mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+    <section className="min-h-screen bg-base-100 flex items-center">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">
+            Programming Skills
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-accent to-secondary mx-auto rounded-full mb-8"></div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12">
             {languages.map((language, index) => (
               <div
                 key={index}
@@ -92,22 +91,17 @@ const LanguageSkills = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="py-16 bg-base-200">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-              Tools I Use
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full"></div>
-          </div>
+          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+            Tools I Use
+          </h3>
+          <div className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"></div>
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
             {tools.map((tool, index) => (
               <div
                 key={index}
-                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
               >
                 <div className="card-body items-center text-center justify-center p-4 sm:p-6">
                   <img
@@ -123,8 +117,8 @@ const LanguageSkills = () => {
             ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

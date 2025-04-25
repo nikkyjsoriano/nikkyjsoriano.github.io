@@ -10,6 +10,7 @@ body {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 html {
@@ -24,5 +25,5 @@ html {
 }
 
 [id] {
-  scroll-margin-top: 2rem; /* Adjust this value based on your navbar height */
+  scroll-margin-top: 3rem; /* Increased to account for navbar height */
 }

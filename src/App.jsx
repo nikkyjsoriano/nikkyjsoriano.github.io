@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import AboutMe from "./components/AboutMe";
 import LanguageSkills from "./components/LanguageSkills";
+import Contact from "./components/Contact";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -10,64 +11,82 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowBackToTop(window.scrollY > 300);
+      // Get the current active section
+      const sections = document.querySelectorAll("div[id]");
+      const currentSection = Array.from(sections).find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top >= 0 && rect.top <= window.innerHeight / 2;
+      });
+
+      // Only show button if we're not on the first section
+      const shouldShow = currentSection && currentSection.id !== "home";
+      console.log(
+        "Current section:",
+        currentSection?.id,
+        "Should show button:",
+        shouldShow
+      );
+      setShowBackToTop(shouldShow);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Also check on hash change
+    window.addEventListener("hashchange", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleScroll);
+    };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    // Find the home section and scroll to it
+    const homeSection = document.getElementById("home");
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
+  const handleNavClick = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  console.log("Current showBackToTop state:", showBackToTop);
+
   return (
-    <div className="w-full min-h-screen">
-      <NavBar />
-      <div id="home">
-        <Landing />
-      </div>
-      <div id="about">
-        <AboutMe />
-      </div>
-      <div id="skills">
-        <LanguageSkills />
-      </div>
-      <div
-        id="contact"
-        className="min-h-screen py-16 bg-base-300 flex items-center"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Contact Me
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
-          </div>
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg mb-6">
-              Feel free to reach out to me at{" "}
-              <a
-                href="mailto:nikkyjsoriano@gmail.com"
-                className="text-primary hover:text-primary-focus"
-              >
-                nikkyjsoriano@gmail.com
-              </a>
-            </p>
-            <p className="text-lg mb-6">Location: East Brunswick, NJ 08816</p>
-            <p className="text-lg mb-6">Phone: (551) 358-3376</p>
-          </div>
+    <div className="relative h-screen overflow-y-scroll snap-y snap-mandatory">
+      <NavBar onNavClick={handleNavClick} />
+      <main className="relative">
+        <div id="home" className="h-screen snap-start">
+          <Landing />
         </div>
-      </div>
+        <div id="about" className="h-screen snap-start">
+          <AboutMe />
+        </div>
+        <div id="skills" className="snap-start">
+          <LanguageSkills />
+        </div>
+        <div id="contact" className="h-screen snap-start">
+          <Contact />
+        </div>
+      </main>
 
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${
+        className={`fixed bottom-8 right-8 z-[100] transition-all duration-300 ${
           showBackToTop ? "opacity-100" : "opacity-0 pointer-events-none"
         } w-[50px] h-[50px] rounded-full bg-base-300 border-2 border-primary/20 font-semibold flex items-center justify-center shadow-lg cursor-pointer overflow-hidden hover:w-[140px] hover:rounded-[50px] group`}
+        style={{ display: showBackToTop ? "flex" : "none" }}
         aria-label="Back to top"
       >
         <div className="relative w-full h-full flex items-center justify-center">
