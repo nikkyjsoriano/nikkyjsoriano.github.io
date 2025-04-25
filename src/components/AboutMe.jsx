@@ -34,7 +34,7 @@ const AboutMe = () => {
               interesting projects. You can find me on various platforms below,
               and if you'd like to see my resume{" "}
               <a
-                href="/resume.pdf"
+                href="https://drive.google.com/uc?export=download&id=1-jxTcrXF17w7_XAPt122e_uX9aJdvCB0"
                 className="text-primary hover:text-primary-focus font-medium transition-colors duration-300"
               >
                 Click Here

@@ -1,24 +1,36 @@
-function NavBar() {
+function NavBar({ onNavClick }) {
   return (
     <div className="navbar bg-base-100 shadow-sm w-full fixed top-0 left-0 right-0 z-50">
       <div className="flex-1">
-        <a href="#home" className="btn btn-ghost lg:text-3xl text-2xl">
+        <a
+          href="#home"
+          className="btn btn-ghost lg:text-3xl text-2xl"
+          onClick={onNavClick}
+        >
           Nikky Soriano
         </a>
       </div>
       <div className="flex-none hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl text-bold">
           <li>
-            <a href="#home">Home</a>
+            <a href="#home" onClick={onNavClick}>
+              Home
+            </a>
           </li>
           <li>
-            <a href="#about">About</a>
+            <a href="#about" onClick={onNavClick}>
+              About
+            </a>
           </li>
           <li>
-            <a href="#skills">Skills</a>
+            <a href="#skills" onClick={onNavClick}>
+              Skills
+            </a>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <a href="#contact" onClick={onNavClick}>
+              Contact
+            </a>
           </li>
         </ul>
       </div>
@@ -45,16 +57,24 @@ function NavBar() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="#home">Home</a>
+              <a href="#home" onClick={onNavClick}>
+                Home
+              </a>
             </li>
             <li>
-              <a href="#about">About</a>
+              <a href="#about" onClick={onNavClick}>
+                About
+              </a>
             </li>
             <li>
-              <a href="#skills">Skills</a>
+              <a href="#skills" onClick={onNavClick}>
+                Skills
+              </a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a href="#contact" onClick={onNavClick}>
+                Contact
+              </a>
             </li>
           </ul>
         </div>
