@@ -41,7 +41,12 @@ function App() {
         className="min-h-screen py-16 bg-base-300 flex items-center"
       >
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Contact Me</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Contact Me
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+          </div>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg mb-6">
               Feel free to reach out to me at{" "}
@@ -52,6 +57,8 @@ function App() {
                 nikkyjsoriano@gmail.com
               </a>
             </p>
+            <p className="text-lg mb-6">Location: East Brunswick, NJ 08816</p>
+            <p className="text-lg mb-6">Phone: (551) 358-3376</p>
           </div>
         </div>
       </div>
