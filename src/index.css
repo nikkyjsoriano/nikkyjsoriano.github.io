@@ -16,8 +16,13 @@ html {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
+}
+
+[id] {
+  scroll-margin-top: 2rem; /* Adjust this value based on your navbar height */
 }

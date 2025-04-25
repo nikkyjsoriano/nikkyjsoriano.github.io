@@ -65,7 +65,7 @@ const LanguageSkills = () => {
 
   return (
     <>
-      <section className="py-16 bg-base-200">
+      <section className="py-16 bg-base-100">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">
             Programming Skills
@@ -74,7 +74,7 @@ const LanguageSkills = () => {
             {languages.map((language, index) => (
               <div
                 key={index}
-                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
               >
                 <div className="card-body items-center text-center justify-center p-4 sm:p-6">
                   <img
@@ -92,14 +92,14 @@ const LanguageSkills = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-base-100">
+      <section className="py-16 bg-base-200">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Tools I Use</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
             {tools.map((tool, index) => (
               <div
                 key={index}
-                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
               >
                 <div className="card-body items-center text-center justify-center p-4 sm:p-6">
                   <img
