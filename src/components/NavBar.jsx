@@ -2,21 +2,23 @@ function NavBar() {
   return (
     <div className="navbar bg-base-100 shadow-sm w-full fixed top-0 left-0 right-0 z-50">
       <div className="flex-1">
-        <a className="btn btn-ghost lg:text-3xl text-2xl">Nikky Soriano</a>
+        <a href="#home" className="btn btn-ghost lg:text-3xl text-2xl">
+          Nikky Soriano
+        </a>
       </div>
       <div className="flex-none hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl text-bold">
           <li>
-            <a>Home</a>
+            <a href="#home">Home</a>
           </li>
           <li>
-            <a>About</a>
+            <a href="#about">About</a>
           </li>
           <li>
-            <a>Projects</a>
+            <a href="#skills">Skills</a>
           </li>
           <li>
-            <a>Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </div>
@@ -43,16 +45,16 @@ function NavBar() {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Home</a>
+              <a href="#home">Home</a>
             </li>
             <li>
-              <a>About</a>
+              <a href="#about">About</a>
             </li>
             <li>
-              <a>Projects</a>
+              <a href="#skills">Skills</a>
             </li>
             <li>
-              <a>Contact</a>
+              <a href="#contact">Contact</a>
             </li>
           </ul>
         </div>
