@@ -11,21 +11,8 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the current active section
-      const sections = document.querySelectorAll("div[id]");
-      const currentSection = Array.from(sections).find((section) => {
-        const rect = section.getBoundingClientRect();
-        return rect.top >= 0 && rect.top <= window.innerHeight / 2;
-      });
-
-      // Only show button if we're not on the first section
-      const shouldShow = currentSection && currentSection.id !== "home";
-      console.log(
-        "Current section:",
-        currentSection?.id,
-        "Should show button:",
-        shouldShow
-      );
+      // Show button when scrolled down more than 300px
+      const shouldShow = window.scrollY > 300;
       setShowBackToTop(shouldShow);
     };
 
@@ -35,12 +22,8 @@ function App() {
     // Add scroll listener
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    // Also check on hash change
-    window.addEventListener("hashchange", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("hashchange", handleScroll);
     };
   }, []);
 
@@ -64,19 +47,19 @@ function App() {
   console.log("Current showBackToTop state:", showBackToTop);
 
   return (
-    <div className="relative h-screen overflow-y-scroll snap-y snap-mandatory">
+    <div className="relative min-h-screen overflow-y-auto">
       <NavBar onNavClick={handleNavClick} />
       <main className="relative">
-        <div id="home" className="h-screen snap-start">
+        <div id="home" className="min-h-screen">
           <Landing />
         </div>
-        <div id="about" className="h-screen snap-start">
+        <div id="about" className="min-h-screen">
           <AboutMe />
         </div>
-        <div id="skills" className="snap-start">
+        <div id="skills" className="min-h-screen">
           <LanguageSkills />
         </div>
-        <div id="contact" className="h-screen snap-start">
+        <div id="contact" className="min-h-screen">
           <Contact />
         </div>
       </main>
@@ -86,7 +69,6 @@ function App() {
         className={`fixed bottom-8 right-8 z-[100] transition-all duration-300 ${
           showBackToTop ? "opacity-100" : "opacity-0 pointer-events-none"
         } w-[50px] h-[50px] rounded-full bg-base-300 border-2 border-primary/20 font-semibold flex items-center justify-center shadow-lg cursor-pointer overflow-hidden hover:w-[140px] hover:rounded-[50px] group`}
-        style={{ display: showBackToTop ? "flex" : "none" }}
         aria-label="Back to top"
       >
         <div className="relative w-full h-full flex items-center justify-center">
