@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const contactInfo = {
@@ -7,22 +8,56 @@ const Contact = () => {
     location: "East Brunswick, NJ",
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="min-h-screen py-8 bg-base-200 flex items-center">
       <div className="container mx-auto px-4 py-8 sm:py-16">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Contact Me
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
-          {/* Contact Information Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.a
               href={`tel:${contactInfo.phone}`}
               className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              variants={itemVariants}
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
@@ -44,11 +79,12 @@ const Contact = () => {
               <span className="text-base-content hover:text-primary transition-colors duration-300">
                 {contactInfo.phone}
               </span>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href={`mailto:${contactInfo.email}`}
               className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              variants={itemVariants}
             >
               <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
                 <svg
@@ -72,9 +108,12 @@ const Contact = () => {
               <span className="text-base-content hover:text-secondary transition-colors duration-300">
                 {contactInfo.email}
               </span>
-            </a>
+            </motion.a>
 
-            <div className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <motion.div
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              variants={itemVariants}
+            >
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,8 +140,8 @@ const Contact = () => {
                 Location
               </h3>
               <span className="text-base-content">{contactInfo.location}</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
