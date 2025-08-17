@@ -41,6 +41,16 @@ function NavBar({ onNavClick }) {
             </a>
           </li>
           <li>
+            <a href="#github" onClick={handleNavItemClick}>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="#leetcode" onClick={handleNavItemClick}>
+              LeetCode
+            </a>
+          </li>
+          <li>
             <a href="#contact" onClick={handleNavItemClick}>
               Contact
             </a>
@@ -100,6 +110,24 @@ function NavBar({ onNavClick }) {
                 className="text-base hover:bg-base-200"
               >
                 Skills
+              </a>
+            </li>
+            <li>
+              <a
+                href="#github"
+                onClick={handleNavItemClick}
+                className="text-base hover:bg-base-200"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="#leetcode"
+                onClick={handleNavItemClick}
+                className="text-base hover:bg-base-200"
+              >
+                LeetCode
               </a>
             </li>
             <li>
