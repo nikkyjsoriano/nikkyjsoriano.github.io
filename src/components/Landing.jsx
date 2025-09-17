@@ -9,7 +9,7 @@ function Landing() {
           <h1 className="lg:text-6xl text-5xl font-bold xl:text-left text-center">
             Hi! I'm Nikky
           </h1>
-          <p className="pt-8 lg:text-3xl text-2xl flex lg:w-120 xl:justify-start justify-center">
+          <p className="pt-8 lg:text-3xl text-xl flex lg:w-120 xl:justify-start justify-center">
             <Typewriter
               options={{
                 loop: true,
