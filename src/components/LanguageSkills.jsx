@@ -76,15 +76,15 @@ const LanguageSkills = () => {
             {languages.map((language, index) => (
               <div
                 key={index}
-                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto"
               >
-                <div className="card-body items-center text-center justify-center p-4 sm:p-6">
+                <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
                     src={language.logo}
                     alt={`${language.name} logo`}
-                    className="w-12 h-12 sm:w-16 sm:h-16 mb-2 sm:mb-4"
+                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
                   />
-                  <h3 className="card-title text-lg sm:text-2xl">
+                  <h3 className="card-title text-base sm:text-2xl">
                     {language.name}
                   </h3>
                 </div>
@@ -101,15 +101,15 @@ const LanguageSkills = () => {
             {tools.map((tool, index) => (
               <div
                 key={index}
-                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto"
               >
-                <div className="card-body items-center text-center justify-center p-4 sm:p-6">
+                <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
                     src={tool.logo}
                     alt={`${tool.name} logo`}
-                    className="w-12 h-12 sm:w-16 sm:h-16 mb-2 sm:mb-4"
+                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
                   />
-                  <h3 className="card-title text-lg sm:text-2xl">
+                  <h3 className="card-title text-base sm:text-2xl">
                     {tool.name}
                   </h3>
                 </div>
