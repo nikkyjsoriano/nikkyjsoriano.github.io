@@ -76,7 +76,7 @@ const LanguageSkills = () => {
             {languages.map((language, index) => (
               <div
                 key={index}
-                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
               >
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
@@ -84,7 +84,7 @@ const LanguageSkills = () => {
                     alt={`${language.name} logo`}
                     className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
                   />
-                  <h3 className="card-title text-base sm:text-2xl">
+                  <h3 className="card-title text-base sm:text-2xl text-primary">
                     {language.name}
                   </h3>
                 </div>
@@ -101,7 +101,7 @@ const LanguageSkills = () => {
             {tools.map((tool, index) => (
               <div
                 key={index}
-                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto"
+                className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
               >
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
@@ -109,7 +109,7 @@ const LanguageSkills = () => {
                     alt={`${tool.name} logo`}
                     className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
                   />
-                  <h3 className="card-title text-base sm:text-2xl">
+                  <h3 className="card-title text-base sm:text-2xl text-secondary">
                     {tool.name}
                   </h3>
                 </div>
