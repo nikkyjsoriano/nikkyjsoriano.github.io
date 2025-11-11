@@ -14,20 +14,46 @@ const AboutMe = () => {
 
           <div className="prose prose-lg max-w-none mx-auto">
             <p className="mb-4 text-lg">
-              Hi! 👋 I'm Nikky, a full-stack developer focused on building
-              modern web applications and cloud solutions. I enjoy creating
-              impactful software that solves real-world problems.
+              Hi! 👋 I'm Nikky, a{" "}
+              <span className="text-primary font-semibold">
+                full-stack developer
+              </span>{" "}
+              focused on building modern web applications and cloud solutions. I
+              enjoy creating impactful software that solves real-world problems.
             </p>
             <p className="mb-4 text-lg">
-              On the frontend, I work with React, Vue, HTML, and JavaScript to
-              build responsive and intuitive interfaces. For the backend, I use
-              Spring Boot, FastAPI, and Python to develop scalable applications.
+              On the frontend, I work with{" "}
+              <span className="text-secondary font-semibold">React</span>,{" "}
+              <span className="text-secondary font-semibold">Vue</span>,{" "}
+              <span className="text-secondary font-semibold">HTML</span>, and{" "}
+              <span className="text-secondary font-semibold">JavaScript</span>{" "}
+              to build responsive and intuitive interfaces. For the backend, I
+              use
+              <span className="text-accent font-semibold">
+                {" "}
+                Spring Boot
+              </span>,{" "}
+              <span className="text-accent font-semibold">FastAPI</span>, and{" "}
+              <span className="text-accent font-semibold">Python</span> to
+              develop scalable applications.
             </p>
             <p className="mb-4 text-lg">
-              I also specialize in data engineering, where I build data
-              pipelines, work with time-series databases like InfluxDB, and
-              create visualizations using Grafana. My experience includes data
-              processing, ETL workflows, and real-time analytics.
+              I also specialize in{" "}
+              <span className="text-primary font-semibold">
+                data engineering
+              </span>
+              , where I build data pipelines, work with time-series databases
+              like{" "}
+              <span className="text-secondary font-semibold">InfluxDB</span>,
+              and create visualizations using{" "}
+              <span className="text-secondary font-semibold">Grafana</span>. My
+              experience includes data processing,{" "}
+              <span className="text-accent font-semibold">ETL workflows</span>,
+              and{" "}
+              <span className="text-accent font-semibold">
+                real-time analytics
+              </span>
+              .
             </p>
             <p className="text-lg">
               I'm always looking to learn new technologies and take on

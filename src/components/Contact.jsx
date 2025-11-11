@@ -22,7 +22,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a
               href={`tel:${contactInfo.phone}`}
-              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
@@ -40,18 +40,20 @@ const Contact = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Phone</h3>
-              <span className="text-base-content">{contactInfo.phone}</span>
+              <h3 className="text-lg font-semibold mb-2 text-primary">Phone</h3>
+              <span className="text-base-content hover:text-primary transition-colors duration-300">
+                {contactInfo.phone}
+              </span>
             </a>
 
             <a
               href={`mailto:${contactInfo.email}`}
-              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-primary"
+                  className="h-8 w-8 text-secondary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -64,15 +66,19 @@ const Contact = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <span className="text-base-content">{contactInfo.email}</span>
+              <h3 className="text-lg font-semibold mb-2 text-secondary">
+                Email
+              </h3>
+              <span className="text-base-content hover:text-secondary transition-colors duration-300">
+                {contactInfo.email}
+              </span>
             </a>
 
-            <div className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <div className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-primary"
+                  className="h-8 w-8 text-accent"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -91,7 +97,9 @@ const Contact = () => {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Location</h3>
+              <h3 className="text-lg font-semibold mb-2 text-accent">
+                Location
+              </h3>
               <span className="text-base-content">{contactInfo.location}</span>
             </div>
           </div>
