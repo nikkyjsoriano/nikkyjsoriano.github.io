@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const LanguageSkills = () => {
   const languages = [
@@ -63,20 +64,55 @@ const LanguageSkills = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="min-h-screen bg-base-100 flex items-center">
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">
             Programming Skills
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-accent to-secondary mx-auto rounded-full mb-8"></div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {languages.map((language, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
+                variants={itemVariants}
               >
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
@@ -88,20 +124,39 @@ const LanguageSkills = () => {
                     {language.name}
                   </h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <motion.h3
+            className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             Tools I Use
-          </h3>
-          <div className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"></div>
+          </motion.h3>
+          <motion.div
+            className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          ></motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {tools.map((tool, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
+                variants={itemVariants}
               >
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
@@ -113,10 +168,10 @@ const LanguageSkills = () => {
                     {tool.name}
                   </h3>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

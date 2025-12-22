@@ -5,6 +5,7 @@ import AboutMe from "./components/AboutMe";
 import LanguageSkills from "./components/LanguageSkills";
 import Contact from "./components/Contact";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -44,24 +45,62 @@ function App() {
     }
   };
 
-  console.log("Current showBackToTop state:", showBackToTop);
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
-    <div className="relative min-h-screen overflow-y-auto">
+    <div className="relative">
       <NavBar onNavClick={handleNavClick} />
-      <main className="relative">
-        <div id="home" className="min-h-screen">
+      <main>
+        <motion.div
+          id="home"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <Landing />
-        </div>
-        <div id="about" className="min-h-screen">
+        </motion.div>
+        <motion.div
+          id="about"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <AboutMe />
-        </div>
-        <div id="skills" className="min-h-screen">
+        </motion.div>
+        <motion.div
+          id="skills"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <LanguageSkills />
-        </div>
-        <div id="contact" className="min-h-screen">
+        </motion.div>
+        <motion.div
+          id="contact"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <Contact />
-        </div>
+        </motion.div>
       </main>
 
       <button
