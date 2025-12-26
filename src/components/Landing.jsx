@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function Landing() {
   return (
-    <div className="hero min-h-[calc(100vh-65px)] w-full">
+    <div className="hero min-h-[calc(100vh-4rem)] w-full">
       <div className="hero-content flex-col xl:flex-row items-center h-full">
         <motion.div
           className="lg:col-6 lg:p-0 p-6 flex-col col-span-full"
