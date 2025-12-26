@@ -70,6 +70,7 @@ const LanguageSkills = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
+        delayChildren: 0.2,
       },
     },
   };
@@ -89,13 +90,7 @@ const LanguageSkills = () => {
   return (
     <section className="min-h-screen bg-base-100 flex items-center">
       <div className="container mx-auto px-4 py-16">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">
             Programming Skills
           </h2>
@@ -105,8 +100,7 @@ const LanguageSkills = () => {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12"
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            animate="visible"
           >
             {languages.map((language, index) => (
               <motion.div
@@ -128,29 +122,16 @@ const LanguageSkills = () => {
             ))}
           </motion.div>
 
-          <motion.h3
-            className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
+          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             Tools I Use
-          </motion.h3>
-          <motion.div
-            className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          ></motion.div>
+          </h3>
+          <div className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"></div>
 
           <motion.div
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            animate="visible"
           >
             {tools.map((tool, index) => (
               <motion.div
@@ -171,7 +152,7 @@ const LanguageSkills = () => {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
