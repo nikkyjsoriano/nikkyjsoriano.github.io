@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import AboutMe from "./components/AboutMe";
 import LanguageSkills from "./components/LanguageSkills";
+import GitHubStats from "./components/GitHubStats";
+import LeetCodeStats from "./components/LeetCodeStats";
 import Contact from "./components/Contact";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -90,6 +92,26 @@ function App() {
           variants={fadeInUp}
         >
           <LanguageSkills />
+        </motion.div>
+        <motion.div
+          id="github"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
+          <GitHubStats />
+        </motion.div>
+        <motion.div
+          id="leetcode"
+          className="min-h-screen"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
+          <LeetCodeStats />
         </motion.div>
         <motion.div
           id="contact"
