@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="relative">
       <NavBar onNavClick={handleNavClick} />
-      <main>
+      <main className="pt-16">
         <motion.div
           id="home"
           className="min-h-screen"
