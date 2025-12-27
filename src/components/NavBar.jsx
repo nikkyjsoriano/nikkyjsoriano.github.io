@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NavBar({ onNavClick }) {
+function NavBar({ onNavClick, isAuthenticated }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -35,6 +35,13 @@ function NavBar({ onNavClick }) {
               About
             </a>
           </li>
+          {isAuthenticated && (
+            <li>
+              <a href="#experience" onClick={handleNavItemClick}>
+                Experience
+              </a>
+            </li>
+          )}
           <li>
             <a href="#skills" onClick={handleNavItemClick}>
               Skills
@@ -103,6 +110,17 @@ function NavBar({ onNavClick }) {
                 About
               </a>
             </li>
+            {isAuthenticated && (
+              <li>
+                <a
+                  href="#experience"
+                  onClick={handleNavItemClick}
+                  className="text-base hover:bg-base-200"
+                >
+                  Experience
+                </a>
+              </li>
+            )}
             <li>
               <a
                 href="#skills"
