@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { navItems } from "../data/navItems";
 
 function NavBar({ onNavClick, isAuthenticated }) {
@@ -17,25 +18,47 @@ function NavBar({ onNavClick, isAuthenticated }) {
     (item) => !item.authRequired || isAuthenticated
   );
 
+  const navItemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.3 + i * 0.08,
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-sm w-full fixed top-0 left-0 right-0 z-50">
       <div className="flex-1">
-        <a
+        <motion.a
           href="#home"
           className="btn btn-ghost lg:text-3xl text-2xl"
           onClick={handleNavItemClick}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           Nikky Soriano
-        </a>
+        </motion.a>
       </div>
       <div className="flex-none hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl text-bold">
-          {visibleItems.map((item) => (
-            <li key={item.href}>
+          {visibleItems.map((item, i) => (
+            <motion.li
+              key={item.href}
+              custom={i}
+              variants={navItemVariants}
+              initial="hidden"
+              animate="visible"
+            >
               <a href={item.href} onClick={handleNavItemClick}>
                 {item.label}
               </a>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

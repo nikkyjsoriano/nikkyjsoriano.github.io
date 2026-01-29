@@ -1,10 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "../lib/animations";
+import { containerVariants } from "../lib/animations";
 import { experiences } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
 
 const Experience = () => {
+  const slideVariants = {
+    hidden: (index) => ({
+      opacity: 0,
+      x: index % 2 === 0 ? -60 : 60,
+    }),
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="min-h-screen py-16 bg-base-200 flex items-center">
       <div className="container mx-auto px-4">
@@ -21,8 +36,11 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                className="card bg-base-300 shadow-xl hover:shadow-2xl transition-all duration-300"
-                variants={itemVariants}
+                className="card bg-base-300 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                custom={index}
+                variants={slideVariants}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
                 <div className="card-body">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
