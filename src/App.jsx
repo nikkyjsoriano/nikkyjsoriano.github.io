@@ -1,4 +1,3 @@
-import "./App.css";
 import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import AboutMe from "./components/AboutMe";
@@ -10,6 +9,7 @@ import Contact from "./components/Contact";
 import SectionWrapper from "./components/SectionWrapper";
 import BackToTopButton from "./components/BackToTopButton";
 import { useMemo } from "react";
+import { Box } from "@chakra-ui/react";
 
 const VALID_PASSWORD = "Nk7xRvQ2pL9wZ4";
 
@@ -19,9 +19,8 @@ function App() {
     return params.get("password") === VALID_PASSWORD;
   }, []);
 
-  const handleNavClick = (e) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.getAttribute("href").substring(1);
+  const handleNavClick = (href) => {
+    const targetId = href.substring(1);
     const targetSection = document.getElementById(targetId);
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: "smooth" });
@@ -29,9 +28,9 @@ function App() {
   };
 
   return (
-    <div className="relative">
+    <Box position="relative">
       <NavBar onNavClick={handleNavClick} isAuthenticated={isAuthenticated} />
-      <main className="pt-16">
+      <Box as="main" pt="16">
         <SectionWrapper id="home">
           <Landing />
         </SectionWrapper>
@@ -55,10 +54,10 @@ function App() {
         <SectionWrapper id="contact">
           <Contact />
         </SectionWrapper>
-      </main>
+      </Box>
 
       <BackToTopButton />
-    </div>
+    </Box>
   );
 }
 

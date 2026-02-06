@@ -1,89 +1,111 @@
+import { Box, Flex, Text, Image } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { MotionBox } from "../lib/motionComponents";
 import Typewriter from "typewriter-effect";
 import landingImage from "../assets/landing.png";
-import { motion } from "framer-motion";
 
 function Landing() {
   return (
-    <div className="hero min-h-[calc(100vh-4rem)] w-full">
-      <div className="hero-content flex-col xl:flex-row items-center h-full">
-        <motion.div
-          className="lg:col-6 lg:p-0 p-6 flex-col col-span-full"
+    <Box
+      minH="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      px={{ base: 4, lg: 8 }}
+      py="24"
+    >
+      <Flex
+        direction={{ base: "column", xl: "row" }}
+        align="center"
+        justify="center"
+        gap="12"
+        maxW="7xl"
+        w="full"
+        mx="auto"
+      >
+        <MotionBox
+          flex="1"
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
         >
-          <motion.h1
-            className="lg:text-6xl text-5xl font-bold xl:text-left text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          >
-            Hi! I'm Nikky
-          </motion.h1>
           <motion.div
-            className="pt-8 lg:text-3xl text-xl flex lg:w-120 xl:justify-start justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            transition={{ delay: 0.2 }}
           >
-            <Typewriter
-              options={{
-                loop: true,
-                delay: 80,
-                deleteSpeed: 500,
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(
-                    '<<span class="text-secondary">h1</span>>Frontend Engineer<<span class="text-secondary">/h1</span>>'
-                  )
-                  .pauseFor(1000)
-                  .deleteAll()
-                  .typeString(
-                    '<span class="text-primary">public class</span> Backend Developer'
-                  )
-                  .pauseFor(1000)
-                  .deleteAll()
-                  .typeString(
-                    '<span class="text-accent">import</span> pandas <span class="text-accent">as</span> Data Engineer'
-                  )
-                  .pauseFor(1000)
-                  .deleteAll()
-                  .start();
-              }}
-            />
+            <Text
+              as="h1"
+              fontSize={{ base: "4xl", lg: "6xl" }}
+              fontWeight="bold"
+              color="fg"
+              textAlign={{ base: "center", xl: "left" }}
+            >
+              Hi! I'm Nikky
+            </Text>
           </motion.div>
-        </motion.div>
-        <motion.div
-          className="lg:col-6 w-full lg:w-auto mt-8 lg:mt-0"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Box
+              fontSize={{ base: "xl", lg: "3xl" }}
+              mt="4"
+              display="flex"
+              justifyContent={{ base: "center", xl: "flex-start" }}
+            >
+              <Typewriter
+                options={{
+                  loop: true,
+                  delay: 80,
+                  deleteSpeed: 500,
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString(
+                      '<<span style="color: var(--chakra-colors-secondary)">h1</span>>Frontend Engineer<<span style="color: var(--chakra-colors-secondary)">/h1</span>>'
+                    )
+                    .pauseFor(1000)
+                    .deleteAll()
+                    .typeString(
+                      '<span style="color: var(--chakra-colors-primary)">public class</span> Backend Developer'
+                    )
+                    .pauseFor(1000)
+                    .deleteAll()
+                    .typeString(
+                      '<span style="color: var(--chakra-colors-accent)">import</span> pandas <span style="color: var(--chakra-colors-accent)">as</span> Data Engineer'
+                    )
+                    .pauseFor(1000)
+                    .deleteAll()
+                    .start();
+                }}
+              />
+            </Box>
+          </motion.div>
+        </MotionBox>
+        <MotionBox
+          flex="1"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          display="flex"
+          justifyContent="center"
         >
-          <motion.img
+          <MotionBox
+            as="img"
             src={landingImage}
-            alt="placeholder"
-            className="lg:max-h-[70vh] max-h-[60vh] w-auto rounded-lg scale-x-[-1]"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: [0, -10, 0],
-            }}
-            transition={{
-              opacity: { duration: 0.6, delay: 0.2 },
-              scale: { duration: 0.6, delay: 0.2 },
-              y: {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.8,
-              },
-            }}
+            alt="Nikky Soriano"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            style={{ transform: "scaleX(-1)" }}
+            borderRadius="lg"
+            maxH={{ base: "60vh", lg: "70vh" }}
+            w="auto"
           />
-        </motion.div>
-      </div>
-    </div>
+        </MotionBox>
+      </Flex>
+    </Box>
   );
 }
 

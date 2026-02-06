@@ -1,19 +1,41 @@
+import { Box, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-function SectionHeader({ title, gradient = "from-primary to-secondary", textSize = "text-5xl" }) {
+const MotionBox = motion.create(Box);
+
+function SectionHeader({ title, gradientFrom = "primary", gradientTo = "secondary", textSize = "5xl" }) {
   return (
-    <motion.div
-      className="text-center mb-12"
+    <MotionBox
+      textAlign="center"
+      mb="12"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h1 className={`${textSize} font-bold mb-4 bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+      <Text
+        as="h2"
+        fontSize={textSize}
+        fontWeight="bold"
+        mb="4"
+        bgGradient="to-r"
+        gradientFrom={gradientFrom}
+        gradientTo={gradientTo}
+        bgClip="text"
+        color="transparent"
+      >
         {title}
-      </h1>
-      <div className={`w-24 h-1 bg-gradient-to-r ${gradient} mx-auto rounded-full`}></div>
-    </motion.div>
+      </Text>
+      <Box
+        w="24"
+        h="1"
+        mx="auto"
+        borderRadius="full"
+        bgGradient="to-r"
+        gradientFrom={gradientFrom}
+        gradientTo={gradientTo}
+      />
+    </MotionBox>
   );
 }
 
