@@ -80,7 +80,7 @@ function NavBar({ onNavClick }) {
           </svg>
         </button>
         <div
-          className={`fixed top-[65px] right-0 w-48 bg-base-100 shadow-lg transition-all duration-300 ease-in-out ${
+          className={`fixed top-16 right-0 w-48 bg-base-100 shadow-lg transition-all duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
