@@ -2,15 +2,23 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import AboutMe from "./components/AboutMe";
+import Experience from "./components/Experience";
 import LanguageSkills from "./components/LanguageSkills";
 import GitHubStats from "./components/GitHubStats";
 import LeetCodeStats from "./components/LeetCodeStats";
 import Contact from "./components/Contact";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+
+const VALID_PASSWORD = "password123";
 
 function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const isAuthenticated = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("password") === VALID_PASSWORD;
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,8 +69,8 @@ function App() {
 
   return (
     <div className="relative">
-      <NavBar onNavClick={handleNavClick} />
-      <main>
+      <NavBar onNavClick={handleNavClick} isAuthenticated={isAuthenticated} />
+      <main className="pt-16">
         <motion.div
           id="home"
           className="min-h-screen"
@@ -83,6 +91,18 @@ function App() {
         >
           <AboutMe />
         </motion.div>
+        {isAuthenticated && (
+          <motion.div
+            id="experience"
+            className="min-h-screen"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <Experience />
+          </motion.div>
+        )}
         <motion.div
           id="skills"
           className="min-h-screen"
