@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navItems } from "../data/navItems";
 
 function NavBar({ onNavClick, isAuthenticated }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +12,10 @@ function NavBar({ onNavClick, isAuthenticated }) {
     onNavClick(e);
     setIsMenuOpen(false);
   };
+
+  const visibleItems = navItems.filter(
+    (item) => !item.authRequired || isAuthenticated
+  );
 
   return (
     <div className="navbar bg-base-100 shadow-sm w-full fixed top-0 left-0 right-0 z-50">
@@ -25,43 +30,13 @@ function NavBar({ onNavClick, isAuthenticated }) {
       </div>
       <div className="flex-none hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl text-bold">
-          <li>
-            <a href="#home" onClick={handleNavItemClick}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#about" onClick={handleNavItemClick}>
-              About
-            </a>
-          </li>
-          {isAuthenticated && (
-            <li>
-              <a href="#experience" onClick={handleNavItemClick}>
-                Experience
+          {visibleItems.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} onClick={handleNavItemClick}>
+                {item.label}
               </a>
             </li>
-          )}
-          <li>
-            <a href="#skills" onClick={handleNavItemClick}>
-              Skills
-            </a>
-          </li>
-          <li>
-            <a href="#github" onClick={handleNavItemClick}>
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href="#leetcode" onClick={handleNavItemClick}>
-              LeetCode
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={handleNavItemClick}>
-              Contact
-            </a>
-          </li>
+          ))}
         </ul>
       </div>
       <div className="flex-none lg:hidden">
@@ -92,71 +67,17 @@ function NavBar({ onNavClick, isAuthenticated }) {
           }`}
         >
           <ul className="menu menu-lg p-2">
-            <li>
-              <a
-                href="#home"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                About
-              </a>
-            </li>
-            {isAuthenticated && (
-              <li>
+            {visibleItems.map((item) => (
+              <li key={item.href}>
                 <a
-                  href="#experience"
+                  href={item.href}
                   onClick={handleNavItemClick}
                   className="text-base hover:bg-base-200"
                 >
-                  Experience
+                  {item.label}
                 </a>
               </li>
-            )}
-            <li>
-              <a
-                href="#skills"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#github"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="#leetcode"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                LeetCode
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                onClick={handleNavItemClick}
-                className="text-base hover:bg-base-200"
-              >
-                Contact
-              </a>
-            </li>
+            ))}
           </ul>
         </div>
       </div>
