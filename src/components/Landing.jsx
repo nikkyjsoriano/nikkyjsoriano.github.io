@@ -65,8 +65,21 @@ function Landing() {
             alt="placeholder"
             className="lg:max-h-[70vh] max-h-[60vh] w-auto rounded-lg scale-x-[-1]"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -10, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.2 },
+              scale: { duration: 0.6, delay: 0.2 },
+              y: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.8,
+              },
+            }}
           />
         </motion.div>
       </div>
