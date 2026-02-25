@@ -1,51 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "../lib/animations";
+import { contactInfo } from "../data/siteData";
+import SectionHeader from "./SectionHeader";
 
 const Contact = () => {
-  const contactInfo = {
-    phone: "+1 (551) 358-3376",
-    email: "nikkyjsoriano@gmail.com",
-    location: "East Brunswick, NJ",
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section className="min-h-screen py-8 bg-base-200 flex items-center">
       <div className="container mx-auto px-4 py-8 sm:py-16">
         <div className="max-w-2xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Contact Me
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-          </motion.div>
+          <SectionHeader title="Contact Me" textSize="text-4xl" />
 
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
