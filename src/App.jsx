@@ -11,7 +11,7 @@ import SectionWrapper from "./components/SectionWrapper";
 import BackToTopButton from "./components/BackToTopButton";
 import { useMemo } from "react";
 
-const VALID_PASSWORD = "password123";
+const VALID_PASSWORD = "Nk$7xR#vQ2pL9w";
 
 function App() {
   const isAuthenticated = useMemo(() => {
