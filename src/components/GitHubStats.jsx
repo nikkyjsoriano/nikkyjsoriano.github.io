@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { itemVariants } from "../lib/animations";
 import { githubUsername } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
-import GitHubCalendar from "react-github-graph";
+import { GitHubCalendar } from "react-github-calendar";
 
 const GitHubStats = () => {
   return (

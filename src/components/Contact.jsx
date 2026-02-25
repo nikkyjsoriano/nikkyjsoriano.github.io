@@ -20,8 +20,13 @@ const Contact = () => {
           >
             <motion.a
               href={`tel:${contactInfo.phone}`}
-              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 transition-colors duration-300 shadow-lg"
               variants={itemVariants}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
@@ -47,8 +52,13 @@ const Contact = () => {
 
             <motion.a
               href={`mailto:${contactInfo.email}`}
-              className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 transition-colors duration-300 shadow-lg"
               variants={itemVariants}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
                 <svg
@@ -75,8 +85,13 @@ const Contact = () => {
             </motion.a>
 
             <motion.div
-              className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg"
               variants={itemVariants}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <svg
