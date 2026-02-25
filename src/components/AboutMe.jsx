@@ -1,45 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "../lib/animations";
+import SectionHeader from "./SectionHeader";
 
 const AboutMe = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   return (
     <section className="min-h-screen py-16 bg-base-300 flex items-center">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              About Me
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-          </motion.div>
+          <SectionHeader title="About Me" />
 
           <motion.div
             className="prose prose-lg max-w-none mx-auto"

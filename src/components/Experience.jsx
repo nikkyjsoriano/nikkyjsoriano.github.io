@@ -1,69 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "../lib/animations";
+import { experiences } from "../data/siteData";
+import SectionHeader from "./SectionHeader";
 
 const Experience = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const experiences = [
-    {
-      title: "Job Title",
-      company: "Company Name",
-      period: "Start Date – End Date",
-      description:
-        "Placeholder description of role and responsibilities. Replace with actual experience details.",
-    },
-    {
-      title: "Job Title",
-      company: "Company Name",
-      period: "Start Date – End Date",
-      description:
-        "Placeholder description of role and responsibilities. Replace with actual experience details.",
-    },
-    {
-      title: "Job Title",
-      company: "Company Name",
-      period: "Start Date – End Date",
-      description:
-        "Placeholder description of role and responsibilities. Replace with actual experience details.",
-    },
-  ];
-
   return (
     <section className="min-h-screen py-16 bg-base-200 flex items-center">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Experience
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-          </motion.div>
+          <SectionHeader title="Experience" />
 
           <motion.div
             className="space-y-8"
