@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { itemVariants } from "../lib/animations";
 import { githubUsername } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
+import GitHubCalendar from "react-github-graph";
 
 const GitHubStats = () => {
   return (
@@ -22,12 +23,7 @@ const GitHubStats = () => {
               <div className="card-body">
                 <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">GitHub Contributions</h2>
                 <div className="rounded-lg overflow-hidden">
-                  <img
-                    src={`https://ghchart.rshah.org/3abff8/${githubUsername}`}
-                    alt="GitHub Contribution Calendar"
-                    className="w-full"
-                    style={{ imageRendering: 'pixelated' }}
-                  />
+                  <GitHubCalendar username={githubUsername} />
                 </div>
                 <p className="text-center text-sm text-base-content/70 mt-4">
                   My contribution activity over the past year
