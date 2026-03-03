@@ -62,25 +62,25 @@ export const tools = [
 
 export const experiences = [
   {
-    title: "Job Title",
-    company: "Company Name",
-    period: "Start Date – End Date",
+    title: "Software Engineer II",
+    company: "Cisco Systems",
+    period: "Aug. 2022 – Present",
     description:
-      "Placeholder description of role and responsibilities. Replace with actual experience details.",
+      "Architected Vue.js contact center solution serving 50+ enterprise customers, generating $1M+ in bookings. Built bulk operations tool consuming REST APIs, reducing manual workflows by 80%. Designed real-time agent routing system processing 1000+ weekly call distributions.",
   },
   {
-    title: "Job Title",
-    company: "Company Name",
-    period: "Start Date – End Date",
+    title: "Software Development Engineer Intern",
+    company: "Colgate Palmolive",
+    period: "May 2022 – Aug. 2022",
     description:
-      "Placeholder description of role and responsibilities. Replace with actual experience details.",
+      "Designed Vue and FastAPI supply chain app, resolving 5 major customer issues and cutting support requests by 29%. Developed notification service boosting daily user activity by 4000+. Enhanced new user retention by 22% through improved onboarding.",
   },
   {
-    title: "Job Title",
-    company: "Company Name",
-    period: "Start Date – End Date",
+    title: "Software Engineer Intern",
+    company: "Cisco Systems",
+    period: "May 2021 – Aug. 2021",
     description:
-      "Placeholder description of role and responsibilities. Replace with actual experience details.",
+      "Architected automated call center platform connecting 1000+ agents using Java and React. Consolidated 4 database connections into a unified platform, improving data accessibility by 75%. Optimized agent state transitions, accelerating response times by 23%.",
   },
 ];
 
