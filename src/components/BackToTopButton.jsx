@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { Box, Icon } from "@chakra-ui/react";
+import { MotionBox } from "../lib/motionComponents";
+import { LuArrowUp } from "react-icons/lu";
 
 function BackToTopButton() {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -26,28 +29,65 @@ function BackToTopButton() {
   };
 
   return (
-    <button
+    <MotionBox
+      as="button"
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-[100] transition-all duration-300 ${
-        showBackToTop ? "opacity-100" : "opacity-0 pointer-events-none"
-      } w-[50px] h-[50px] rounded-full bg-base-300 border-2 border-primary/20 font-semibold flex items-center justify-center shadow-lg cursor-pointer overflow-hidden hover:w-[140px] hover:rounded-[50px] group`}
       aria-label="Back to top"
+      position="fixed"
+      bottom="8"
+      right="8"
+      zIndex="100"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      bg="bg.muted"
+      borderWidth="2px"
+      borderColor="primary"
+      shadow="lg"
+      cursor="pointer"
+      overflow="hidden"
+      fontWeight="semibold"
+      initial="hidden"
+      animate={showBackToTop ? "visible" : "hidden"}
+      whileHover="hover"
+      variants={{
+        hidden: { opacity: 0, pointerEvents: "none", width: "50px", height: "50px", borderRadius: "50px" },
+        visible: { opacity: 1, pointerEvents: "auto", width: "50px", height: "50px", borderRadius: "50px" },
+        hover: { opacity: 1, pointerEvents: "auto", width: "140px", height: "50px", borderRadius: "50px" }
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <div className="relative w-full h-full flex items-center justify-center">
-        <svg
-          className="w-3 transition-transform duration-300 group-hover:translate-y-[-200%]"
-          viewBox="0 0 384 512"
+      <Box position="relative" w="full" h="full" display="flex" alignItems="center" justifyContent="center">
+        <MotionBox
+          as="span"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          variants={{
+            hidden: { y: 0 },
+            visible: { y: 0 },
+            hover: { y: "-200%" }
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <path
-            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-            className="fill-base-content"
-          />
-        </svg>
-        <span className="absolute text-base-content text-[0px] opacity-0 transition-all duration-300 group-hover:text-[13px] group-hover:opacity-100">
+          <Icon as={LuArrowUp} boxSize="4" color="fg" />
+        </MotionBox>
+        <MotionBox
+          as="span"
+          position="absolute"
+          color="fg"
+          whiteSpace="nowrap"
+          variants={{
+            hidden: { opacity: 0, fontSize: "0px" },
+            visible: { opacity: 0, fontSize: "0px" },
+            hover: { opacity: 1, fontSize: "13px" }
+          }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
           Back to Top
-        </span>
-      </div>
-    </button>
+        </MotionBox>
+      </Box>
+    </MotionBox>
   );
 }
 

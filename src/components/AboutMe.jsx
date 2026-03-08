@@ -1,55 +1,70 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Box, Text, VStack } from "@chakra-ui/react";
+import { MotionBox } from "../lib/motionComponents";
 import { containerVariants, itemVariants } from "../lib/animations";
 import { aboutMe } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
 
 const AboutMe = () => {
   return (
-    <section className="min-h-screen py-16 bg-base-300 flex items-center">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader title="About Me" />
+    <Box
+      as="section"
+      id="about"
+      minH="100vh"
+      py={{ base: 16, lg: 20 }}
+      bg="bg.muted"
+      display="flex"
+      alignItems="center"
+    >
+      <Box w="full" maxW="4xl" mx="auto" px={{ base: 4, lg: 8 }}>
+        <SectionHeader title="About Me" gradientFrom="secondary" gradientTo="accent" />
 
-          <motion.div
-            className="prose prose-lg max-w-none mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+        <MotionBox
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          mx="auto"
+        >
+          <VStack align="start" gap={4}>
             {aboutMe.paragraphs.map((segments, i) => (
-              <motion.p
-                key={i}
-                className="mb-4 text-lg"
-                variants={itemVariants}
-              >
-                {segments.map((segment, j) =>
-                  segment.color ? (
-                    <span key={j} className={`${segment.color} font-semibold`}>
-                      {segment.text}
-                    </span>
-                  ) : (
-                    <React.Fragment key={j}>{segment.text}</React.Fragment>
-                  )
-                )}
-              </motion.p>
+              <MotionBox key={i} variants={itemVariants}>
+                <Text fontSize="lg" color="fg" lineHeight="tall">
+                  {segments.map((segment, j) =>
+                    segment.color ? (
+                      <Text as="span" key={j} color={segment.color} fontWeight="semibold">
+                        {segment.text}
+                      </Text>
+                    ) : (
+                      <React.Fragment key={j}>{segment.text}</React.Fragment>
+                    )
+                  )}
+                </Text>
+              </MotionBox>
             ))}
-            <motion.p className="text-lg" variants={itemVariants}>
-              I'm always looking to learn new technologies and take on
-              interesting projects. You can find me on various platforms below,
-              and if you'd like to see my resume{" "}
-              <a
-                href={aboutMe.resumeLink}
-                className="text-primary hover:text-primary-focus font-medium transition-colors duration-300"
-              >
-                Click Here
-              </a>
-            </motion.p>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+            <MotionBox variants={itemVariants}>
+              <Text fontSize="lg" color="fg" lineHeight="tall">
+                I'm always looking to learn new technologies and take on
+                interesting projects. You can find me on various platforms below,
+                and if you'd like to see my resume{" "}
+                <Box
+                  as="a"
+                  href={aboutMe.resumeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="accent"
+                  fontWeight="semibold"
+                  transition="color 0.3s"
+                  _hover={{ textDecoration: "underline" }}
+                >
+                  Click Here
+                </Box>
+              </Text>
+            </MotionBox>
+          </VStack>
+        </MotionBox>
+      </Box>
+    </Box>
   );
 };
 
