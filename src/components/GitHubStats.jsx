@@ -1,39 +1,39 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Box, Text, VStack } from "@chakra-ui/react";
+import { MotionBox } from "../lib/motionComponents";
 import { itemVariants } from "../lib/animations";
 import { githubUsername } from "../data/siteData";
-import SectionHeader from "./SectionHeader";
 import { GitHubCalendar } from "react-github-calendar";
+import SectionHeader from "./SectionHeader";
 
 const GitHubStats = () => {
   return (
-    <section className="min-h-screen py-16 bg-base-200 flex items-center">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeader title="Coding Activity" />
+    <Box as="section" id="github" minH="100vh" py="20" px={{ base: 4, lg: 8 }} bg="bg.muted">
+      <Box maxW="4xl" mx="auto">
+        <SectionHeader title="Coding Activity" gradientFrom="primary" gradientTo="secondary" />
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={itemVariants}
-            className="flex justify-center"
-          >
-            <div className="card bg-base-300 shadow-xl w-full">
-              <div className="card-body">
-                <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">GitHub Contributions</h2>
-                <div className="rounded-lg overflow-hidden">
-                  <GitHubCalendar username={githubUsername} />
-                </div>
-                <p className="text-center text-sm text-base-content/70 mt-4">
-                  My contribution activity over the past year
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+        <MotionBox
+          initial="hidden"
+          whileInView="visible"
+          variants={itemVariants}
+          viewport={{ once: true }}
+        >
+          <Box bg="bg.emphasized" borderRadius="xl" p="8" shadow="xl" w="full">
+            <Text fontSize="2xl" fontWeight="bold" color="primary" textAlign="center" mb="6">
+              GitHub Activity
+            </Text>
+            
+            <Box borderRadius="lg" overflow="hidden">
+              <GitHubCalendar username={githubUsername} />
+            </Box>
+
+            <Text textAlign="center" fontSize="sm" color="fg.muted" mt="4">
+              Recent contribution activity
+            </Text>
+          </Box>
+        </MotionBox>
+      </Box>
+    </Box>
   );
 };
 

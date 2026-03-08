@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { Box, VStack, Text, HStack } from "@chakra-ui/react";
+import { MotionBox } from "../lib/motionComponents";
 import { containerVariants } from "../lib/animations";
 import { experiences } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
@@ -21,47 +22,57 @@ const Experience = () => {
   };
 
   return (
-    <section className="min-h-screen py-16 bg-base-200 flex items-center">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader title="Experience" />
+    <Box as="section" id="experience" minH="100vh" bg="bg.muted" py="20" px={{ base: 4, lg: 8 }}>
+      <Box maxW="4xl" mx="auto">
+        <SectionHeader title="Experience" />
 
-          <motion.div
-            className="space-y-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+        <MotionBox
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <VStack gap="8" w="full">
             {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                className="card bg-base-300 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+              <MotionBox
+                key={exp.title}
                 custom={index}
+                initial="hidden"
+                whileInView="visible"
                 variants={slideVariants}
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                viewport={{ once: true }}
+                w="full"
               >
-                <div className="card-body">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <h2 className="card-title text-2xl text-primary">
+                <Box bg="bg.emphasized" borderRadius="xl" p="8" shadow="xl" w="full">
+                  <HStack 
+                    flexDir={{ base: "column", sm: "row" }} 
+                    alignItems={{ base: "flex-start", sm: "center" }} 
+                    justifyContent="space-between" 
+                    mb="2"
+                    gap={{ base: "1", sm: "0" }}
+                  >
+                    <Text fontSize="2xl" fontWeight="bold" color="primary">
                       {exp.title}
-                    </h2>
-                    <span className="text-sm text-base-content/70">
+                    </Text>
+                    <Text fontSize="sm" color="fg.muted">
                       {exp.period}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-secondary mb-2">
+                    </Text>
+                  </HStack>
+                  <Text fontSize="lg" fontWeight="semibold" color="secondary" mb="2">
                     {exp.company}
-                  </h3>
-                  <p className="text-base-content/80">{exp.description}</p>
-                </div>
-              </motion.div>
+                  </Text>
+                  <Text color="fg" mt="3" lineHeight="tall">
+                    {exp.description}
+                  </Text>
+                </Box>
+              </MotionBox>
             ))}
-          </motion.div>
-        </div>
-      </div>
-    </section>
+          </VStack>
+        </MotionBox>
+      </Box>
+    </Box>
   );
 };
 
