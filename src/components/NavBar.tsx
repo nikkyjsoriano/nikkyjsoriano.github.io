@@ -1,5 +1,5 @@
 import { useState, type MouseEvent } from "react";
-import { navItems } from "../data/navItems";
+import { navItems } from "@/data/navItems";
 
 export interface NavBarProps {
   onNavClick: (event: MouseEvent<HTMLAnchorElement>) => void;
@@ -29,8 +29,7 @@ function NavBar({ onNavClick, isAuthenticated }: NavBarProps) {
         <a
           href="#home"
           className="btn btn-ghost lg:text-3xl text-2xl"
-          onClick={handleNavItemClick}
-        >
+          onClick={handleNavItemClick}>
           Nikky Soriano
         </a>
       </div>
@@ -50,36 +49,31 @@ function NavBar({ onNavClick, isAuthenticated }: NavBarProps) {
           onClick={toggleMenu}
           className="btn btn-ghost btn-circle"
           aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
+          aria-expanded={isMenuOpen}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+            stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h7"}
-            />
+              d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h7"}/>
           </svg>
         </button>
         <div
           className={`fixed top-16 right-0 w-48 bg-base-100 shadow-lg transition-all duration-300 ease-in-out ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
+          }`}>
           <ul className="menu menu-lg p-2">
             {visibleItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
                   onClick={handleNavItemClick}
-                  className="text-base hover:bg-base-200"
-                >
+                  className="text-base hover:bg-base-200">
                   {item.label}
                 </a>
               </li>

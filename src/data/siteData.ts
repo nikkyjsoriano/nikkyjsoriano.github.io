@@ -34,6 +34,21 @@ export interface AboutMe {
   readonly paragraphs: readonly (readonly ProseSegment[])[];
 }
 
+/**
+ * Roles the landing page types out, one after another. Each is an HTML
+ * string (Typewriter's `typeString` renders raw markup) so the inline
+ * `<span>` tags can highlight a role's language-flavored prefix, matching
+ * the syntax that language: "public class" for Java, "import ... as" for
+ * Python. HTML angle brackets meant to display literally, like the `<h1>`
+ * tags framing "Frontend Engineer", must be entity-escaped rather than
+ * typed raw, or the browser parses them as real tags.
+ */
+export const heroRoles: readonly string[] = [
+  '&lt;<span class="text-secondary">h1</span>&gt;Frontend Engineer&lt;/<span class="text-secondary">h1</span>&gt;',
+  '<span class="text-primary">public class</span> Backend Developer',
+  '<span class="text-accent">import</span> pandas <span class="text-accent">as</span> Data Engineer',
+];
+
 export const languages: readonly Skill[] = [
   {
     name: "Vue",

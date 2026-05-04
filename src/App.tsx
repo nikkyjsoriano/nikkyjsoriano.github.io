@@ -1,15 +1,15 @@
 import { useCallback, useMemo, type MouseEvent } from "react";
-import "./App.css";
-import NavBar from "./components/NavBar";
-import Landing from "./components/Landing";
-import AboutMe from "./components/AboutMe";
-import Experience from "./components/Experience";
-import LanguageSkills from "./components/LanguageSkills";
-import GitHubStats from "./components/GitHubStats";
-import LeetCodeStats from "./components/LeetCodeStats";
-import Contact from "./components/Contact";
-import SectionWrapper from "./components/SectionWrapper";
-import BackToTopButton from "./components/BackToTopButton";
+import "@/App.css";
+import NavBar from "@/components/NavBar";
+import Landing from "@/components/Landing";
+import AboutMe from "@/components/AboutMe";
+import Experience from "@/components/Experience";
+import LanguageSkills from "@/components/LanguageSkills";
+import GitHubStats from "@/components/GitHubStats";
+import LeetCodeStats from "@/components/LeetCodeStats";
+import Contact from "@/components/Contact";
+import SectionWrapper from "@/components/SectionWrapper";
+import BackToTopButton from "@/components/BackToTopButton";
 
 /**
  * Shared secret that unhides the Experience section.
