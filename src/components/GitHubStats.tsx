@@ -1,17 +1,16 @@
+import { GitHubCalendar } from "react-github-calendar";
 import { motion } from "framer-motion";
 import { itemVariants } from "@/lib/animations";
 import { githubUsername } from "@/data/siteData";
 import SectionHeader from "@/components/SectionHeader";
 
 /**
- * The dim theme's base-300/base-content/primary/secondary, as hex. The
- * activity-graph API takes hex query params, not the site's OKLCH CSS vars,
- * so these are pinned by hand to match src/App.css's `dim` theme.
+ * The dim theme's base-100/primary, as hex. react-activity-calendar's theme
+ * prop interpolates a 5-step scale from two literal colors, not the site's
+ * OKLCH CSS vars, so these are pinned by hand to match App.css's `dim` theme.
  */
-const CHART_BG = "20252e";
-const CHART_TEXT = "b2ccd6";
-const CHART_LINE = "9fe88d";
-const CHART_POINT = "ff7d5d";
+const CHART_EMPTY = "#2a303c";
+const CHART_FILLED = "#9fe88d";
 
 function GitHubStats() {
   return (
@@ -27,15 +26,15 @@ function GitHubStats() {
             variants={itemVariants}
             className="flex justify-center">
             <div className="card bg-base-300 shadow-xl w-full">
-              <div className="card-body">
-                <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">
+              <div className="card-body items-center">
+                <h2 className="card-title text-2xl mb-4 text-primary text-center">
                   GitHub Contributions
                 </h2>
-                <div className="rounded-lg overflow-hidden">
-                  <img
-                    src={`https://github-readme-activity-graph.vercel.app/graph?username=${githubUsername}&bg_color=${CHART_BG}&color=${CHART_TEXT}&line=${CHART_LINE}&point=${CHART_POINT}&area=true&area_color=${CHART_LINE}&hide_border=true&hide_title=true`}
-                    alt="GitHub Contribution Activity Graph"
-                    className="w-full"/>
+                <div className="w-full overflow-x-auto flex justify-center">
+                  <GitHubCalendar
+                    username={githubUsername}
+                    colorScheme="dark"
+                    theme={{ dark: [CHART_EMPTY, CHART_FILLED] }}/>
                 </div>
                 <p className="text-center text-sm text-base-content/70 mt-4">
                   My contribution activity over the past year
