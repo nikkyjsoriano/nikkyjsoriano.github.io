@@ -17,30 +17,18 @@ function GitHubStats() {
     <section className="min-h-screen py-16 bg-base-200 flex items-center">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <SectionHeader title="Coding Activity" />
+          <SectionHeader title="GitHub Activity" />
 
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={itemVariants}
-            className="flex justify-center">
-            <div className="card bg-base-300 shadow-xl w-full">
-              <div className="card-body items-center">
-                <h2 className="card-title text-2xl mb-4 text-primary text-center">
-                  GitHub Contributions
-                </h2>
-                <div className="w-full overflow-x-auto flex justify-center">
-                  <GitHubCalendar
-                    username={githubUsername}
-                    colorScheme="dark"
-                    theme={{ dark: [CHART_EMPTY, CHART_FILLED] }}/>
-                </div>
-                <p className="text-center text-sm text-base-content/70 mt-4">
-                  My contribution activity over the past year
-                </p>
-              </div>
-            </div>
+            className="w-full overflow-x-auto flex justify-center">
+            <GitHubCalendar
+              username={githubUsername}
+              colorScheme="dark"
+              theme={{ dark: [CHART_EMPTY, CHART_FILLED] }}/>
           </motion.div>
         </div>
       </div>
