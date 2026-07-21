@@ -15,20 +15,11 @@ function LeetCodeStats() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={itemVariants}
-            className="flex justify-center">
-            <div className="card bg-base-100 shadow-xl max-w-2xl w-full">
-              <div className="card-body">
-                <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">
-                  LeetCode Stats
-                </h2>
-                <div className="rounded-lg overflow-hidden">
-                  <img
-                    src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=dark&font=Baloo%202&ext=contest`}
-                    alt="LeetCode Stats"
-                    className="w-full"/>
-                </div>
-              </div>
-            </div>
+            className="w-full overflow-x-auto flex justify-center">
+            <img
+              src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=nord&font=Baloo%202&ext=contest`}
+              alt="LeetCode Stats"
+              className="rounded-lg max-w-2xl w-full"/>
           </motion.div>
         </div>
       </div>
