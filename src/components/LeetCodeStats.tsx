@@ -8,7 +8,7 @@ function LeetCodeStats() {
     <section className="min-h-screen py-16 bg-base-300 flex items-center">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <SectionHeader title="Problem Solving" />
+          <SectionHeader title="LeetCode" />
 
           <motion.div
             initial="hidden"
