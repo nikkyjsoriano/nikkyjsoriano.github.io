@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    /* Language & emit ------------------------------------------------------ */
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "noEmit": true,
+
+    /* Strictness — every flag TypeScript offers, all on -------------------- */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "strictBuiltinIteratorReturn": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    /* Interop & module hygiene -------------------------------------------- */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedSideEffectImports": true,
+
+    /*
+     * The only relaxed flag, and it applies to node_modules only — never to
+     * our own code. Vite's own bundled .d.ts files are not
+     * exactOptionalPropertyTypes clean, and importGlob.d.ts references the
+     * DOM-only Worker type unconditionally. Checking them reports vendor
+     * errors we cannot fix and none of our own.
+     */
+    "skipLibCheck": true
+  }
+}

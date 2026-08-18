@@ -1,31 +1,30 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { languages, tools } from "../data/siteData";
 
-const LanguageSkills = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
     },
-  };
+  },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
     },
-  };
+  },
+};
 
+function LanguageSkills() {
   return (
     <section className="min-h-screen bg-base-100 flex items-center">
       <div className="container mx-auto px-4 py-16">
@@ -33,7 +32,7 @@ const LanguageSkills = () => {
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">
             Programming Skills
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-accent to-secondary mx-auto rounded-full mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-accent to-secondary mx-auto rounded-full mb-8" />
 
           <motion.div
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12"
@@ -41,9 +40,9 @@ const LanguageSkills = () => {
             initial="hidden"
             animate="visible"
           >
-            {languages.map((language, index) => (
+            {languages.map((language) => (
               <motion.div
-                key={index}
+                key={language.name}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
                 variants={itemVariants}
               >
@@ -64,7 +63,7 @@ const LanguageSkills = () => {
           <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
             Tools I Use
           </h3>
-          <div className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8"></div>
+          <div className="w-16 h-1 bg-gradient-to-r from-secondary to-accent mx-auto rounded-full mb-8" />
 
           <motion.div
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
@@ -72,9 +71,9 @@ const LanguageSkills = () => {
             initial="hidden"
             animate="visible"
           >
-            {tools.map((tool, index) => (
+            {tools.map((tool) => (
               <motion.div
-                key={index}
+                key={tool.name}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
                 variants={itemVariants}
               >
@@ -95,6 +94,6 @@ const LanguageSkills = () => {
       </div>
     </section>
   );
-};
+}
 
 export default LanguageSkills;

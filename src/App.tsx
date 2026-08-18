@@ -1,3 +1,4 @@
+import { useCallback, useMemo, type MouseEvent } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
@@ -9,8 +10,14 @@ import LeetCodeStats from "./components/LeetCodeStats";
 import Contact from "./components/Contact";
 import SectionWrapper from "./components/SectionWrapper";
 import BackToTopButton from "./components/BackToTopButton";
-import { useMemo } from "react";
 
+/**
+ * Shared secret that unhides the Experience section.
+ *
+ * This is a soft gate for a static site, not a security boundary: the value
+ * ships in the client bundle and anyone can read it. Treat everything behind it
+ * as public, and never put anything sensitive here.
+ */
 const VALID_PASSWORD = "Nk$7xR#vQ2pL9w";
 
 function App() {
@@ -19,14 +26,14 @@ function App() {
     return params.get("password") === VALID_PASSWORD;
   }, []);
 
-  const handleNavClick = (e) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.getAttribute("href").substring(1);
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute("href")?.slice(1);
+    if (targetId === undefined) {
+      return;
     }
-  };
+    document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+  }, []);
 
   return (
     <div className="relative">
@@ -38,11 +45,11 @@ function App() {
         <SectionWrapper id="about">
           <AboutMe />
         </SectionWrapper>
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <SectionWrapper id="experience">
             <Experience />
           </SectionWrapper>
-        )}
+        ) : null}
         <SectionWrapper id="skills">
           <LanguageSkills />
         </SectionWrapper>

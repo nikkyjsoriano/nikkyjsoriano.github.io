@@ -1,10 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "../lib/animations";
 import { contactInfo } from "../data/siteData";
 import SectionHeader from "./SectionHeader";
 
-const Contact = () => {
+function Contact() {
   return (
     <section className="min-h-screen py-8 bg-base-200 flex items-center">
       <div className="container mx-auto px-4 py-8 sm:py-16">
@@ -110,6 +109,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Contact;

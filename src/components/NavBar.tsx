@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { navItems } from "../data/navItems";
 
-function NavBar({ onNavClick, isAuthenticated }) {
+export interface NavBarProps {
+  onNavClick: (event: MouseEvent<HTMLAnchorElement>) => void;
+  /** Gates the items marked `authRequired` in `navItems`. */
+  isAuthenticated: boolean;
+}
+
+function NavBar({ onNavClick, isAuthenticated }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleNavItemClick = (e) => {
-    onNavClick(e);
+  const handleNavItemClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    onNavClick(event);
     setIsMenuOpen(false);
   };
 
   const visibleItems = navItems.filter(
-    (item) => !item.authRequired || isAuthenticated
+    (item) => item.authRequired !== true || isAuthenticated,
   );
 
   return (
