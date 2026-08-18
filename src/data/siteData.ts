@@ -1,4 +1,40 @@
-export const languages = [
+/** A logo tile rendered by the skills grid. */
+export interface Skill {
+  readonly name: string;
+  readonly logo: string;
+}
+
+/** One entry in the (auth-gated) work-history timeline. */
+export interface ExperienceEntry {
+  readonly title: string;
+  readonly company: string;
+  readonly period: string;
+  readonly description: string;
+}
+
+export interface ContactInfo {
+  readonly phone: string;
+  readonly email: string;
+  readonly location: string;
+}
+
+/** Tailwind text-color utility used to highlight a run of About Me prose. */
+export type HighlightClass = "text-primary" | "text-secondary" | "text-accent";
+
+/**
+ * A run of prose in an About Me paragraph. A segment with a `color` is
+ * highlighted with that class; one without renders as plain body text.
+ */
+export type ProseSegment =
+  | { readonly text: string; readonly color: HighlightClass }
+  | { readonly text: string; readonly color?: undefined };
+
+export interface AboutMe {
+  readonly resumeLink: string;
+  readonly paragraphs: readonly (readonly ProseSegment[])[];
+}
+
+export const languages: readonly Skill[] = [
   {
     name: "Vue",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
@@ -41,7 +77,7 @@ export const languages = [
   },
 ];
 
-export const tools = [
+export const tools: readonly Skill[] = [
   {
     name: "Git",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
@@ -60,7 +96,7 @@ export const tools = [
   },
 ];
 
-export const experiences = [
+export const experiences: readonly ExperienceEntry[] = [
   {
     title: "Software Engineer II",
     company: "Cisco Systems",
@@ -84,13 +120,13 @@ export const experiences = [
   },
 ];
 
-export const contactInfo = {
+export const contactInfo: ContactInfo = {
   phone: "+1 (551) 358-3376",
   email: "nikkyjsoriano@gmail.com",
   location: "East Brunswick, NJ",
 };
 
-export const aboutMe = {
+export const aboutMe: AboutMe = {
   resumeLink:
     "https://drive.google.com/uc?export=download&id=1-jxTcrXF17w7_XAPt122e_uX9aJdvCB0",
   paragraphs: [
@@ -137,7 +173,6 @@ export const aboutMe = {
     ],
   ],
 };
-
 
 export const githubUsername = "nikkyjsoriano";
 

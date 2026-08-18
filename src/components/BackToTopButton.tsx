@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+/** Scroll distance, in px, past which the button appears. */
+const SHOW_AFTER_PX = 300;
 
 function BackToTopButton() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const shouldShow = window.scrollY > 300;
-      setShowBackToTop(shouldShow);
+      setShowBackToTop(window.scrollY > SHOW_AFTER_PX);
     };
 
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -19,10 +20,7 @@ function BackToTopButton() {
   }, []);
 
   const scrollToTop = () => {
-    const homeSection = document.getElementById("home");
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
