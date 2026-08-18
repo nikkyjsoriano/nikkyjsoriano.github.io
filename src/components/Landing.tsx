@@ -1,6 +1,13 @@
+import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import landingImage from "../assets/landing.png";
-import { motion } from "framer-motion";
+
+/** Inline color spans use Tailwind classes so the typed HTML tracks the theme. */
+const roleStrings = [
+  '<<span class="text-secondary">h1</span>>Frontend Engineer<<span class="text-secondary">/h1</span>>',
+  '<span class="text-primary">public class</span> Backend Developer',
+  '<span class="text-accent">import</span> pandas <span class="text-accent">as</span> Data Engineer',
+] as const;
 
 function Landing() {
   return (
@@ -18,7 +25,7 @@ function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            Hi! I'm Nikky
+            Hi! I&apos;m Nikky
           </motion.h1>
           <motion.div
             className="pt-8 lg:text-3xl text-xl flex lg:w-120 xl:justify-start justify-center"
@@ -33,22 +40,11 @@ function Landing() {
                 deleteSpeed: 500,
               }}
               onInit={(typewriter) => {
-                typewriter
-                  .typeString(
-                    '<<span class="text-secondary">h1</span>>Frontend Engineer<<span class="text-secondary">/h1</span>>'
+                roleStrings
+                  .reduce(
+                    (chain, role) => chain.typeString(role).pauseFor(1000).deleteAll(),
+                    typewriter,
                   )
-                  .pauseFor(1000)
-                  .deleteAll()
-                  .typeString(
-                    '<span class="text-primary">public class</span> Backend Developer'
-                  )
-                  .pauseFor(1000)
-                  .deleteAll()
-                  .typeString(
-                    '<span class="text-accent">import</span> pandas <span class="text-accent">as</span> Data Engineer'
-                  )
-                  .pauseFor(1000)
-                  .deleteAll()
                   .start();
               }}
             />
