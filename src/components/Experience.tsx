@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "../lib/animations";
-import { experiences } from "../data/siteData";
-import SectionHeader from "./SectionHeader";
+import { containerVariants, itemVariants } from "@/lib/animations";
+import { experiences } from "@/data/siteData";
+import SectionHeader from "@/components/SectionHeader";
 
 function Experience() {
   return (
@@ -15,14 +15,12 @@ function Experience() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+            viewport={{ once: true, margin: "-100px" }}>
             {experiences.map((experience) => (
               <motion.div
                 key={experience.title}
                 className="card bg-base-300 shadow-xl hover:shadow-2xl transition-all duration-300"
-                variants={itemVariants}
-              >
+                variants={itemVariants}>
                 <div className="card-body">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                     <h2 className="card-title text-2xl text-primary">

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { itemVariants } from "../lib/animations";
-import { githubUsername } from "../data/siteData";
-import SectionHeader from "./SectionHeader";
+import { itemVariants } from "@/lib/animations";
+import { githubUsername } from "@/data/siteData";
+import SectionHeader from "@/components/SectionHeader";
 
 function GitHubStats() {
   return (
@@ -15,8 +15,7 @@ function GitHubStats() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={itemVariants}
-            className="flex justify-center"
-          >
+            className="flex justify-center">
             <div className="card bg-base-300 shadow-xl w-full">
               <div className="card-body">
                 <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">
@@ -27,8 +26,7 @@ function GitHubStats() {
                     src={`https://ghchart.rshah.org/3abff8/${githubUsername}`}
                     alt="GitHub Contribution Calendar"
                     className="w-full"
-                    style={{ imageRendering: "pixelated" }}
-                  />
+                    style={{ imageRendering: "pixelated" }}/>
                 </div>
                 <p className="text-center text-sm text-base-content/70 mt-4">
                   My contribution activity over the past year

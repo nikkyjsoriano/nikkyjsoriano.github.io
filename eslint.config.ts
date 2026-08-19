@@ -13,8 +13,7 @@ import type { Linter } from "eslint";
  * under `noPropertyAccessFromIndexSignature` every preset is a possibly-missing
  * bracket lookup. Resolve that once here rather than at each spread.
  */
-const reactPreset = (name: string): Linter.RulesRecord =>
-  react.configs.flat[name]?.rules ?? {};
+const reactPreset = (name: string): Linter.RulesRecord => react.configs.flat[name]?.rules ?? {};
 
 export default defineConfig(
   globalIgnores(["dist", "node_modules", "**/*.tsbuildinfo"]),
@@ -82,6 +81,10 @@ export default defineConfig(
       "react/no-unstable-nested-components": "error",
       "react/self-closing-comp": "error",
       "react/jsx-boolean-value": ["error", "never"],
+
+      // Keep a multi-line opening tag's closing `>` on the last prop's line
+      // instead of dropping it to a line of its own.
+      "react/jsx-closing-bracket-location": ["error", "after-props"],
       "react/function-component-definition": [
         "error",
         {
@@ -148,6 +151,36 @@ export default defineConfig(
       curly: ["error", "all"],
       "prefer-template": "error",
       "require-atomic-updates": "error",
+
+      // Keep an arrow function's implicit-return body on the same line as
+      // its `=>` instead of wrapping to a new line.
+      "implicit-arrow-linebreak": ["error", "beside"],
+
+      // Long Tailwind classNames, CDN URLs, and SVG path data have no clean
+      // wrap point, so only code/logic lines are held to the limit.
+      "max-len": [
+        "error",
+        {
+          code: 100,
+          ignoreStrings: true,
+          ignoreTemplateLiterals: true,
+          ignoreUrls: true,
+        },
+      ],
+
+      // The "@/*" path alias exists precisely so cross-directory imports
+      // don't need to count "../" segments back to src/.
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["./*", "../*"],
+              message: 'Use the "@/" alias instead of a relative import.',
+            },
+          ],
+        },
+      ],
     },
   },
 );

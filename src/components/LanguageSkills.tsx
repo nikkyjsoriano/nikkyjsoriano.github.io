@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { languages, tools } from "../data/siteData";
+import { languages, tools } from "@/data/siteData";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -38,20 +38,17 @@ function LanguageSkills() {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
-          >
+            animate="visible">
             {languages.map((language) => (
               <motion.div
                 key={language.name}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
-                variants={itemVariants}
-              >
+                variants={itemVariants}>
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
                     src={language.logo}
                     alt={`${language.name} logo`}
-                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
-                  />
+                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"/>
                   <h3 className="card-title text-base sm:text-2xl text-primary">
                     {language.name}
                   </h3>
@@ -69,20 +66,17 @@ function LanguageSkills() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
-          >
+            animate="visible">
             {tools.map((tool) => (
               <motion.div
                 key={tool.name}
                 className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-square w-full sm:w-auto max-w-[140px] sm:max-w-none mx-auto hover:scale-105"
-                variants={itemVariants}
-              >
+                variants={itemVariants}>
                 <div className="card-body items-center text-center justify-center p-2 sm:p-6">
                   <img
                     src={tool.logo}
                     alt={`${tool.name} logo`}
-                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
-                  />
+                    className="w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"/>
                   <h3 className="card-title text-base sm:text-2xl text-secondary">
                     {tool.name}
                   </h3>
