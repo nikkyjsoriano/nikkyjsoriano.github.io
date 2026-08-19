@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "../lib/animations";
-import { aboutMe } from "../data/siteData";
-import SectionHeader from "./SectionHeader";
+import { containerVariants, itemVariants } from "@/lib/animations";
+import { aboutMe } from "@/data/siteData";
+import SectionHeader from "@/components/SectionHeader";
 
 function AboutMe() {
   return (
@@ -16,23 +16,19 @@ function AboutMe() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+            viewport={{ once: true, margin: "-100px" }}>
             {aboutMe.paragraphs.map((segments, paragraphIndex) => (
               <motion.p
                 key={paragraphIndex}
                 className="mb-4 text-lg"
-                variants={itemVariants}
-              >
-                {segments.map((segment, segmentIndex) =>
-                  segment.color === undefined ? (
-                    <Fragment key={segmentIndex}>{segment.text}</Fragment>
-                  ) : (
-                    <span key={segmentIndex} className={`${segment.color} font-semibold`}>
-                      {segment.text}
-                    </span>
-                  ),
-                )}
+                variants={itemVariants}>
+                {segments.map((segment, segmentIndex) => segment.color === undefined ? (
+                  <Fragment key={segmentIndex}>{segment.text}</Fragment>
+                ) : (
+                  <span key={segmentIndex} className={`${segment.color} font-semibold`}>
+                    {segment.text}
+                  </span>
+                ))}
               </motion.p>
             ))}
             <motion.p className="text-lg" variants={itemVariants}>
@@ -41,8 +37,7 @@ function AboutMe() {
               and if you&apos;d like to see my resume{" "}
               <a
                 href={aboutMe.resumeLink}
-                className="text-primary hover:text-primary-focus font-medium transition-colors duration-300"
-              >
+                className="text-primary hover:text-primary-focus font-medium transition-colors duration-300">
                 Click Here
               </a>
             </motion.p>

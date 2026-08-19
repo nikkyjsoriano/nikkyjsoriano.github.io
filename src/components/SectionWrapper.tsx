@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { fadeInUp } from "../lib/animations";
+import { fadeInUp } from "@/lib/animations";
 
 export interface SectionWrapperProps {
   /** Anchor target for the navbar; matches the `href` in `navItems` minus `#`. */
@@ -16,8 +16,7 @@ function SectionWrapper({ id, children }: SectionWrapperProps) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      variants={fadeInUp}
-    >
+      variants={fadeInUp}>
       {children}
     </motion.div>
   );

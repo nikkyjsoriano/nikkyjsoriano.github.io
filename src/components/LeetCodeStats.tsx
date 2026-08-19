@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { itemVariants } from "../lib/animations";
-import { leetcodeUsername } from "../data/siteData";
-import SectionHeader from "./SectionHeader";
+import { itemVariants } from "@/lib/animations";
+import { leetcodeUsername } from "@/data/siteData";
+import SectionHeader from "@/components/SectionHeader";
 
 function LeetCodeStats() {
   return (
@@ -15,8 +15,7 @@ function LeetCodeStats() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={itemVariants}
-            className="flex justify-center"
-          >
+            className="flex justify-center">
             <div className="card bg-base-100 shadow-xl max-w-2xl w-full">
               <div className="card-body">
                 <h2 className="card-title text-2xl mb-4 text-primary text-center mx-auto">
@@ -26,8 +25,7 @@ function LeetCodeStats() {
                   <img
                     src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=dark&font=Baloo%202&ext=contest`}
                     alt="LeetCode Stats"
-                    className="w-full"
-                  />
+                    className="w-full"/>
                 </div>
               </div>
             </div>
