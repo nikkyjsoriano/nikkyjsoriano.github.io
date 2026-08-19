@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath // empty'); case \"$f\" in *.ts|*.tsx) out=$(pnpm exec eslint --fix \"$f\" 2>&1); code=$?; if [ \"$code\" -ne 0 ]; then printf '%s\\n' \"$out\" >&2; exit 2; fi ;; esac",
+            "statusMessage": "eslint --fix on changed file",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git commit *)",
+            "command": "out=$(pnpm check 2>&1); code=$?; if [ \"$code\" -ne 0 ]; then printf '%s\\n' \"$out\" >&2; echo 'pnpm check failed (typecheck + lint) - fix these before committing' >&2; exit 2; fi",
+            "statusMessage": "pnpm check before commit",
+            "timeout": 120
+          },
+          {
+            "type": "command",
+            "if": "Bash(gh pr create *)",
+            "command": "out=$(pnpm check 2>&1); code=$?; if [ \"$code\" -ne 0 ]; then printf '%s\\n' \"$out\" >&2; echo 'pnpm check failed (typecheck + lint) - fix these before opening a PR' >&2; exit 2; fi",
+            "statusMessage": "pnpm check before PR",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}
