@@ -1,7 +1,17 @@
-import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "@/lib/animations";
+import { motion, type Variants } from "framer-motion";
+import { containerVariants } from "@/lib/animations";
 import { contactInfo } from "@/data/siteData";
 import SectionHeader from "@/components/SectionHeader";
+
+/**
+ * The section itself already floats up via SectionWrapper's fadeInUp. Giving
+ * these staggered tiles their own y-offset on top of that stacks two
+ * distinct motions, so the tiles only fade in.
+ */
+const tileVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 function Contact() {
   return (
@@ -19,7 +29,7 @@ function Contact() {
             <motion.a
               href={`tel:${contactInfo.phone}`}
               className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              variants={itemVariants}>
+              variants={tileVariants}>
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +53,7 @@ function Contact() {
             <motion.a
               href={`mailto:${contactInfo.email}`}
               className="flex flex-col items-center p-6 rounded-lg bg-base-100 hover:bg-base-200 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              variants={itemVariants}>
+              variants={tileVariants}>
               <div className="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +78,7 @@ function Contact() {
 
             <motion.div
               className="flex flex-col items-center p-6 rounded-lg bg-base-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              variants={itemVariants}>
+              variants={tileVariants}>
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
