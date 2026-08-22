@@ -1,4 +1,4 @@
-import { useCallback, useMemo, type MouseEvent } from "react";
+import { useCallback, useMemo, useState, type MouseEvent } from "react";
 import "@/App.css";
 import NavBar from "@/components/NavBar";
 import Landing from "@/components/Landing";
@@ -19,8 +19,13 @@ import BackToTopButton from "@/components/BackToTopButton";
  * as public, and never put anything sensitive here.
  */
 const VALID_PASSWORD = "Nk$7xR#vQ2pL9w";
+type Theme = "light" | "dark";
 
 function App() {
+  const [theme, setTheme] = useState<Theme>(() => {
+    return document.documentElement.dataset["theme"] === "dark" ? "dark" : "light";
+  });
+
   const isAuthenticated = useMemo(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get("password") === VALID_PASSWORD;
@@ -35,9 +40,21 @@ function App() {
     document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  const handleThemeToggle = useCallback(() => {
+    const nextTheme: Theme = theme === "light" ? "dark" : "light";
+
+    document.documentElement.dataset["theme"] = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
+  }, [theme]);
+
   return (
     <div className="relative">
-      <NavBar onNavClick={handleNavClick} isAuthenticated={isAuthenticated} />
+      <NavBar
+        onNavClick={handleNavClick}
+        isAuthenticated={isAuthenticated}
+        theme={theme}
+        onThemeToggle={handleThemeToggle} />
       <main className="pt-16">
         <SectionWrapper id="home">
           <Landing />
@@ -54,10 +71,10 @@ function App() {
           <LanguageSkills />
         </SectionWrapper>
         <SectionWrapper id="github">
-          <GitHubStats />
+          <GitHubStats theme={theme} />
         </SectionWrapper>
         <SectionWrapper id="leetcode">
-          <LeetCodeStats />
+          <LeetCodeStats theme={theme} />
         </SectionWrapper>
         <SectionWrapper id="contact">
           <Contact />

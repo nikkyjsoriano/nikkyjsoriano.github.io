@@ -5,9 +5,16 @@ export interface NavBarProps {
   onNavClick: (event: MouseEvent<HTMLAnchorElement>) => void;
   /** Gates the items marked `authRequired` in `navItems`. */
   isAuthenticated: boolean;
+  theme: "light" | "dark";
+  onThemeToggle: () => void;
 }
 
-function NavBar({ onNavClick, isAuthenticated }: NavBarProps) {
+function NavBar({
+  onNavClick,
+  isAuthenticated,
+  theme,
+  onThemeToggle,
+}: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -43,6 +50,40 @@ function NavBar({ onNavClick, isAuthenticated }: NavBarProps) {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="flex-none">
+        <button
+          type="button"
+          onClick={onThemeToggle}
+          className="btn btn-ghost btn-circle"
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          aria-pressed={theme === "dark"}
+          title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
+          {theme === "light" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true">
+              <path d="M9.6 2.4a.75.75 0 0 0-.523.211A9.75 9.75 0 1 0 21.39 14.923a.75.75 0 0 0-.926-.927A7.5 7.5 0 0 1 10.004 3.536.75.75 0 0 0 9.6 2.4Z"/>
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 3v1.5m0 15V21m9-9h-1.5m-15 0H3m15.364-6.364-1.061 1.06M6.697 17.303l-1.06 1.061m12.728 0-1.061-1.06M6.697 6.697l-1.06-1.061M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+            </svg>
+          )}
+        </button>
       </div>
       <div className="flex-none lg:hidden">
         <button

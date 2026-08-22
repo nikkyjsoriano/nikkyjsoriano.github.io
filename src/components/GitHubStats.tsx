@@ -4,15 +4,11 @@ import { itemVariants } from "@/lib/animations";
 import { githubUsername } from "@/data/siteData";
 import SectionHeader from "@/components/SectionHeader";
 
-/**
- * The dim theme's base-100/primary, as hex. react-activity-calendar's theme
- * prop interpolates a 5-step scale from two literal colors, not the site's
- * OKLCH CSS vars, so these are pinned by hand to match App.css's `dim` theme.
- */
-const CHART_EMPTY = "#2a303c";
-const CHART_FILLED = "#9fe88d";
+export interface GitHubStatsProps {
+  theme: "light" | "dark";
+}
 
-function GitHubStats() {
+function GitHubStats({ theme }: GitHubStatsProps) {
   return (
     <section className="min-h-screen py-16 bg-base-200 flex items-center">
       <div className="container mx-auto px-4">
@@ -27,8 +23,7 @@ function GitHubStats() {
             className="w-full overflow-x-auto flex justify-center">
             <GitHubCalendar
               username={githubUsername}
-              colorScheme="dark"
-              theme={{ dark: [CHART_EMPTY, CHART_FILLED] }}/>
+              colorScheme={theme}/>
           </motion.div>
         </div>
       </div>

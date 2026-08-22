@@ -3,7 +3,13 @@ import { itemVariants } from "@/lib/animations";
 import { leetcodeUsername } from "@/data/siteData";
 import SectionHeader from "@/components/SectionHeader";
 
-function LeetCodeStats() {
+export interface LeetCodeStatsProps {
+  theme: "light" | "dark";
+}
+
+function LeetCodeStats({ theme }: LeetCodeStatsProps) {
+  const cardTheme = theme === "dark" ? "nord" : "light";
+
   return (
     <section className="min-h-screen py-16 bg-base-300 flex items-center">
       <div className="container mx-auto px-4">
@@ -17,7 +23,7 @@ function LeetCodeStats() {
             variants={itemVariants}
             className="w-full overflow-x-auto flex justify-center">
             <img
-              src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=nord&font=Baloo%202&ext=contest`}
+              src={`https://leetcard.jacoblin.cool/${leetcodeUsername}?theme=${cardTheme}&font=Baloo%202&ext=contest`}
               alt="LeetCode Stats"
               className="rounded-lg max-w-2xl w-full"/>
           </motion.div>
